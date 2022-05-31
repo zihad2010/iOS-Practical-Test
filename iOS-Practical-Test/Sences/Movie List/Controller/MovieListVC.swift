@@ -129,5 +129,14 @@ extension MovieListVC {
                 searchBar.resignFirstResponder()
             })
             .disposed(by: disposable)
+        
+        self.searchBar
+            .rx
+            .searchButtonClicked
+            .subscribe(onNext: { [unowned self] in
+                searchBar.resignFirstResponder()
+            })
+            .disposed(by: disposable)
+
     }
 }
