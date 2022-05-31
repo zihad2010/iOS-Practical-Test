@@ -122,7 +122,7 @@ extension MovieListVC {
             })
             .disposed(by: disposable)
         
-        searchBar
+        self.searchBar
             .rx
             .cancelButtonClicked
             .subscribe(onNext: { [unowned self] in
