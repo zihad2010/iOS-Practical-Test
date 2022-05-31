@@ -9,10 +9,11 @@ import UIKit
 
 @objc open class ActivityIndicator: NSObject {
 
-    let loadingIndicator: ProgressView = {
-        let progress = ProgressView(colors: [.red, .systemGreen, .systemBlue], lineWidth: 5)
-        progress.translatesAutoresizingMaskIntoConstraints = false
-        return progress
+    let loadingIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        view.color = .gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     @objc func showLoading(view: UIView?) {
@@ -28,13 +29,13 @@ import UIKit
                 loadingIndicator.heightAnchor
                     .constraint(equalTo: loadingIndicator.widthAnchor)
             ])
-            loadingIndicator.isAnimating = true
+            loadingIndicator.startAnimating()
         }
     }
     
     @objc func hideLoading() {
         DispatchQueue.main.async { [self] in
-            self.loadingIndicator.isAnimating = false
+            self.loadingIndicator.stopAnimating()
         }
     }
 }
