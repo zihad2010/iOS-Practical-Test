@@ -12,9 +12,30 @@ import RxReachability
 
 class MovieListVC: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var movieListTableView: UITableView!
-        
+    @IBOutlet weak var navBar: UIView!
+    
+   //MARK: Elements
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.returnKeyType = .done
+        searchBar.placeholder = " Search Here....."
+        searchBar.sizeToFit()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
+
+    private lazy var movieListTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
+                tableView.register(MovieListCell.self,
+                           forCellReuseIdentifier: MovieListCell.reuseIdentifier)
+        return tableView
+    }()
+
     private let activity = ActivityIndicator()
     private let disposable = DisposeBag()
     private let reachability: Reachability! = try? Reachability()
@@ -41,11 +62,15 @@ class MovieListVC: UIViewController {
         reachability.stopNotifier()
     }
     
-    fileprivate func setupView(){
-        self.hideKeyboardWhenTappedonView()
-    }
+    private func setupView() {
         
-    fileprivate func setupBindings(){
+        view.addSubview(searchBar)
+        view.addSubview(movieListTableView)
+        self.hideKeyboardWhenTappedonView()
+        NSLayoutConstraint.activate(staticConstraints())
+    }
+    
+    private func setupBindings(){
         
         reachability?.rx.isReachable
             .subscribe(onNext: { [weak self] isReachable in
@@ -92,7 +117,7 @@ extension MovieListVC {
         movieListVM
             .movieList
             .observeOn(MainScheduler.instance)
-            .bind(to: movieListTableView.rx.items(cellIdentifier: MovieListCell.cellIdentifier, cellType: MovieListCell.self)) {  (row,vm,cell) in
+            .bind(to: movieListTableView.rx.items(cellIdentifier: MovieListCell.reuseIdentifier, cellType: MovieListCell.self)) {  (row,vm,cell) in
                 cell.eachCell = vm
             }
             .disposed(by: disposable)
@@ -139,4 +164,29 @@ extension MovieListVC {
             .disposed(by: disposable)
 
     }
+}
+
+//MARK: - set Elements constant -
+
+extension MovieListVC {
+    
+    private func staticConstraints() -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        
+        constraints.append(contentsOf: [
+            searchBar.topAnchor.constraint(equalTo: navBar.bottomAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: 55.0),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        constraints.append(contentsOf: [
+            movieListTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant:0),
+            movieListTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            movieListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            movieListTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        return constraints
+    }
+        
 }
