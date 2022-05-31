@@ -2,7 +2,7 @@
 //  NativeNavigator.swift
 //  Maya
 //
-//  Created by Md. Asraful Alam on 23/11/21.
+//  Created by Maya on 23/11/21.
 //
 
 import Foundation

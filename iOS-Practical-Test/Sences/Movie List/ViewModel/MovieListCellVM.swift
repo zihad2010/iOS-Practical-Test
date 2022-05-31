@@ -8,6 +8,7 @@
 import Foundation
 
 struct MovieListCellVM {
+    
     let title: String?
     let description: String?
     let coverUrl: URL?
@@ -15,6 +16,6 @@ struct MovieListCellVM {
     init(_ vm: MovieListModel.Results){
         self.title = vm.title
         self.description = vm.overview
-        self.coverUrl = .posterPath(vm.poster_path ?? "")
+        self.coverUrl = .posterUrl(vm.poster_path ?? "")
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 enum BaseURL : String {
     case themoviedb = "https://api.themoviedb.org"
-    case moviePhoto = "https://image.tmdb.org/t/p/w500/"
+    case movieThumbsdb = "https://image.tmdb.org/t/p/w500/"
 }
 
 struct Api {
@@ -22,8 +22,8 @@ extension URL {
     
     static let moviePath = Api.getUrl(baseURL: .themoviedb, path: "/3/search/movie")
     
-    static let posterPath: (String) -> URL? = { path in
-        return Api.getUrl(baseURL: .moviePhoto, path: path)
+    static let posterUrl: (String) -> URL? = { path in
+        return Api.getUrl(baseURL: .movieThumbsdb, path: path)
     }
 }
 

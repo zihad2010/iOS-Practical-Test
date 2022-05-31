@@ -29,9 +29,6 @@ class MovieListCell: UITableViewCell {
             } failer: { [weak self] (faield) in
                 self?.posterImageView.image = placeholderImage
             }
-
         }
     }
-
-
 }

@@ -15,19 +15,18 @@ class MovieListVM {
     public let movieList : PublishSubject<[MovieListCellVM]> = PublishSubject()
     public let loading: PublishSubject<Bool> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
-    private let movieInfo = BehaviorRelay<String>(value: "")
-    
+    public var searchText =  BehaviorRelay<String>(value: "")
 }
 
 extension MovieListVM {
     
-    public func createResource() -> Any {
+    public func createResource(text: String = "marvel") -> Any {
         
         guard var url = URL.moviePath else {
             fatalError("URl was incorrect")
         }
         url.appendQueryItem(name: APIKEY, value: KEY )
-        url.appendQueryItem(name: QUERY, value: "marvel")
+        url.appendQueryItem(name: QUERY, value: text)
 
         var resource = Resource<MovieListModel.Response>(url: url)
         resource.httpMethod = .get
@@ -35,7 +34,7 @@ extension MovieListVM {
         return resource
     }
     
-    func getDataWith<T>(resource: Resource<T>)  {
+   public func getDataWith<T>(resource: Resource<T>)  {
         
         self.loading.onNext(true)
         
@@ -48,13 +47,8 @@ extension MovieListVM {
                 switch response{
                 case .success(let data):
                     self?.convertWith(data as! MovieListModel.Response)
-                case .failure(let failure):
-                    switch failure {
-                    case .authorizationError(_):
-                        break
-                    default:
-                        self?.error.onNext("Something went wrong!")
-                    }
+                case .failure(_):
+                    self?.error.onNext("Something went wrong!")
                 }
             }, onError: {[weak self] (error) in
                 self?.loading.onNext(false)

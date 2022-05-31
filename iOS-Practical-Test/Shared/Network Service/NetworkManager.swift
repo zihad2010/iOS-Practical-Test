@@ -52,14 +52,14 @@ class NetworkManager {
 
 extension NetworkManager {
     
-     func load<T:Codable>(resource: Resource<T>) -> Observable<(ApiResult<T>)> {
+   public func load<T:Codable>(resource: Resource<T>) -> Observable<(ApiResult<T>)> {
         
         return Observable.just(resource.url)
             .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
                 
                 return URLSession.shared.rx.response(request: .requestWith(resource: resource))
             }.map { response,data -> (ApiResult<T>) in
-              
+                
                 switch response.statusCode {
                     
                 case 200...300:
@@ -85,7 +85,7 @@ extension NetworkManager {
             }
     }
     
-    func parseResponse<T:Codable>(data: Data?, type: T.Type) throws -> T {
+    fileprivate  func parseResponse<T:Codable>(data: Data?, type: T.Type) throws -> T {
         return try JSONDecoder().decode(type.self, from: data ?? Data())
     }
 }
