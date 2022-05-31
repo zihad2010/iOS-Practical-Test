@@ -28,6 +28,12 @@
 		6CB397DD284621B3008E2918 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397DC284621B3008E2918 /* NetworkManager.swift */; };
 		6CB397DF28462204008E2918 /* URLRequestExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397DE28462204008E2918 /* URLRequestExt.swift */; };
 		6CB397E1284626DE008E2918 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397E0284626DE008E2918 /* UIImageViewExt.swift */; };
+		6CB397F428462E8E008E2918 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397EF28462E8E008E2918 /* ToastView.swift */; };
+		6CB397F928463025008E2918 /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397F828463025008E2918 /* MovieListCell.swift */; };
+		6CB397FB28463168008E2918 /* MovieListCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397FA28463168008E2918 /* MovieListCellVM.swift */; };
+		6CB397FD284633B7008E2918 /* URLExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397FC284633B7008E2918 /* URLExt.swift */; };
+		6CB397FF28463436008E2918 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB397FE28463436008E2918 /* ApiManager.swift */; };
+		6CB39801284637ED008E2918 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB39800284637ED008E2918 /* Constant.swift */; };
 		813B8B567DE8D97FBBFAE15F /* libPods-iOS-Practical-Test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A529E1E424B4A6FCA296F0 /* libPods-iOS-Practical-Test.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +83,12 @@
 		6CB397DE28462204008E2918 /* URLRequestExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExt.swift; sourceTree = "<group>"; };
 		6CB397E0284626DE008E2918 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		6CB397E228462745008E2918 /* iOS-Practical-Test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-Practical-Test-Bridging-Header.h"; sourceTree = "<group>"; };
+		6CB397EF28462E8E008E2918 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		6CB397F828463025008E2918 /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
+		6CB397FA28463168008E2918 /* MovieListCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellVM.swift; sourceTree = "<group>"; };
+		6CB397FC284633B7008E2918 /* URLExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExt.swift; sourceTree = "<group>"; };
+		6CB397FE28463436008E2918 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		6CB39800284637ED008E2918 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F5A529E1E424B4A6FCA296F0 /* libPods-iOS-Practical-Test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS-Practical-Test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -197,6 +209,7 @@
 		6CB397C02846173D008E2918 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6CB397E828462E74008E2918 /* Views */,
 				6CB397DB28462024008E2918 /* Network Service */,
 				6CB397C428461786008E2918 /* Helper */,
 				6CB397C12846174A008E2918 /* Extension */,
@@ -236,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				6CB39791284612CC008E2918 /* Main.storyboard */,
+				6CB397F828463025008E2918 /* MovieListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				6CB397D728461CFE008E2918 /* MovieListVM.swift */,
+				6CB397FA28463168008E2918 /* MovieListCellVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -280,8 +295,27 @@
 			children = (
 				6CB397DC284621B3008E2918 /* NetworkManager.swift */,
 				6CB397DE28462204008E2918 /* URLRequestExt.swift */,
+				6CB397FC284633B7008E2918 /* URLExt.swift */,
+				6CB397FE28463436008E2918 /* ApiManager.swift */,
+				6CB39800284637ED008E2918 /* Constant.swift */,
 			);
 			path = "Network Service";
+			sourceTree = "<group>";
+		};
+		6CB397E828462E74008E2918 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6CB397E928462E8E008E2918 /* ToastView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6CB397E928462E8E008E2918 /* ToastView */ = {
+			isa = PBXGroup;
+			children = (
+				6CB397EF28462E8E008E2918 /* ToastView.swift */,
+			);
+			path = ToastView;
 			sourceTree = "<group>";
 		};
 		BD0C0BDA6260C91F2A4EC48A /* Pods */ = {
@@ -381,6 +415,10 @@
 			knownRegions = (
 				en,
 				Base,
+				ur,
+				ar,
+				bn,
+				hi,
 			);
 			mainGroup = 6CB3977F284612CC008E2918;
 			productRefGroup = 6CB39789284612CC008E2918 /* Products */;
@@ -451,7 +489,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CB397F428462E8E008E2918 /* ToastView.swift in Sources */,
 				6CB397DA28461D16008E2918 /* MovieListModel.swift in Sources */,
+				6CB397FD284633B7008E2918 /* URLExt.swift in Sources */,
 				6CB397D828461CFE008E2918 /* MovieListVM.swift in Sources */,
 				6CB397C328461769008E2918 /* UIViewControllerExt.swift in Sources */,
 				6CB397D3284618ED008E2918 /* MovieListCoordinator.swift in Sources */,
@@ -461,6 +501,10 @@
 				6CB397DD284621B3008E2918 /* NetworkManager.swift in Sources */,
 				6CB397CC284617A3008E2918 /* DeallocObserver.swift in Sources */,
 				6CB397DF28462204008E2918 /* URLRequestExt.swift in Sources */,
+				6CB397FF28463436008E2918 /* ApiManager.swift in Sources */,
+				6CB397FB28463168008E2918 /* MovieListCellVM.swift in Sources */,
+				6CB39801284637ED008E2918 /* Constant.swift in Sources */,
+				6CB397F928463025008E2918 /* MovieListCell.swift in Sources */,
 				6CB397E1284626DE008E2918 /* UIImageViewExt.swift in Sources */,
 				6CB3978C284612CC008E2918 /* AppDelegate.swift in Sources */,
 				6CB3978E284612CC008E2918 /* SceneDelegate.swift in Sources */,

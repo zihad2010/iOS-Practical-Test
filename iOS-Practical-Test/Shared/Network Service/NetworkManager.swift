@@ -1,5 +1,5 @@
 //
-//  ApiService.swift
+//  NetworkManager.swift
 //  iOS-Practical-Test
 //
 //  Created by Maya on 31/5/22.
@@ -69,7 +69,6 @@ extension NetworkManager {
                         return ApiResult.success(data)
                     } catch ( let error ) {
                         print("data parse:-",error)
-                        print("unknown error: \(resource.url)")
                         return ApiResult.failure(.parsingError)
                     }
                 case 400:
